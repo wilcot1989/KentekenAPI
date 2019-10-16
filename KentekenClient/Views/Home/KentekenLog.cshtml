@@ -1,0 +1,51 @@
+﻿@model IEnumerable<KentekenLogViewModel>
+@{
+    ViewData["Title"] = "KentekenLogger";
+}
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Kenteken Logger</a>
+    </li>
+    <li class="breadcrumb-item active">Overview</li>
+</ol>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+@if (Model != null)
+{
+    <!-- Layout-->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-chart-area"></i>
+            Opgevraagde kentekengegevens vanuit de API door @User.Identity.Name
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Kenteken</th>
+                            <th>Datum/tijdstip</th>
+                        </tr>
+                    </thead>
+                    @foreach (var item in Model)
+                    {
+                        <tbody>
+                            <tr>
+                                <td>@item.Kenteken</td>
+                                <td>@item.Log_Datetime</td>
+                            </tr>
+                        </tbody>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+}

@@ -1,0 +1,115 @@
+﻿@model KentekenInfoViewModel
+
+@{
+    ViewData["Title"] = "KentekenInfo";
+}
+
+<!-- Breadcrumbs-->
+<ol class="breadcrumb">
+    <li class="breadcrumb-item">
+        <a href="#">Kenteken Informatie</a>
+    </li>
+    <li class="breadcrumb-item active">Overview</li>
+</ol>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-chart-area"></i>
+        Kenteken Nummer
+    </div>
+    <div class="card-body">
+        <form class="form-inline" method="post" asp-controller="Home" asp-action="KentekenInfo">
+            <div class="form-group mx-sm-3 mb-2">
+                <label class="sr-only" asp-for="Kenteken">Kenteken</label>
+                <input type="text" class="form-control" placeholder="Kenteken" asp-for="Kenteken">
+            </div>
+            <input class="btn btn-primary mb-2" type="submit" value="KentekenInfo" />
+        </form>
+    </div>
+</div>
+
+@if (Model != null)
+{
+    <!-- Layout-->
+    <div class="card mb-3">
+        <div class="card-header">
+            <i class="fas fa-chart-area"></i>
+            Kenteken Informatie
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Kenteken info</th>
+                            <th>@Model.Kenteken</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Voertuigsoort</td>
+                            <td>@Model.Voertuigsoort</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>Merk</td>
+                            <td>@Model.Merk</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>Model</td>
+                            <td>@Model.Handelsbenaming</td>
+                        </tr>
+                    </tbody>
+
+
+                    <tbody>
+                        <tr>
+                            <td>Clinderinhoud</td>
+                            <td>@Model.Cilinderinhoud cc</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>Massa ledig voertuig</td>
+                            <td>@Model.MassaLedig kg</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>Technische max. massa voertuig</td>
+                            <td>@Model.MassaMax kg</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>Bruto BPM</td>
+                            <td>€ @Model.Bpm</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>Catalogusprijs</td>
+                            <td>€ @Model.Catalogusprijs</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td>WAM verzekerd</td>
+                            <td>@Model.WamVerzekerd</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+}
